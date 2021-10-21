@@ -59,8 +59,17 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
-              Navbar
+            <a className="navbar-brand" href="/">
+              Home
+            </a>
+            <a className="navbar-brand" href="/events">
+              Events
+            </a>
+            <a className="navbar-brand" href="/about">
+              About Us
+            </a>
+            <a className="navbar-brand" href="/blogs">
+              Blogs
             </a>
           </div>
           {isAuthenticated ? authLinks : guestLinks}

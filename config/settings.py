@@ -1,14 +1,13 @@
 import os
 from pathlib import Path
 
-import environ #import environ
+import environ  # import environ
 
-env = environ.Env() # Initialise environment variables
+env = environ.Env()  # Initialise environment variables
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -34,31 +33,30 @@ INSTALLED_APPS = [
 
     'accounts',
     'frontend',
+    'core',
 
-    'rest_framework', #https://www.django-rest-framework.org/
+    'rest_framework',  # https://www.django-rest-framework.org/
     'rest_framework.authtoken',
-    'corsheaders', # To Connect API with React App if required in seprate apps
+    'corsheaders',  # To Connect API with React App if required in seprate apps
 
-   
-    'allauth',  #https://django-allauth.readthedocs.io/en/latest/installation.html
+    'allauth',  # https://django-allauth.readthedocs.io/en/latest/installation.html
     'allauth.account',
     'allauth.socialaccount',
 
-    
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django_extensions',
 
-    'debug_toolbar', #local usage
+    'debug_toolbar',  # local usage
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', #new
+    'corsheaders.middleware.CorsMiddleware',  # new
     'django.middleware.common.CommonMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware', #new
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # new
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -75,8 +73,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'], #Django look for templates folder in root directory
-        'APP_DIRS': True, #Django look for templates folder in app directory
+        'DIRS': ['templates'],  # Django look for templates folder in root directory
+        'APP_DIRS': True,  # Django look for templates folder in app directory
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -90,12 +88,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-#Create a file named .env and Declare your environment variables for database in .env 
+# Create a file named .env and Declare your environment variables for database in .env
 # Make sure you don’t use quotations around strings.
-IS_POSTGRESQL = False # Set True if want to use PostgrSQL DB
+IS_POSTGRESQL = False  # Set True if want to use PostgrSQL DB
 
 if IS_POSTGRESQL is True:
-    
+
     DATABASES = {
         'default': {
             'ENGINE': env('DATABASE_ENGINE'),
@@ -109,11 +107,11 @@ if IS_POSTGRESQL is True:
 else:
     # this part will be executed if IS_POSTGRESQL = False
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -141,9 +139,8 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
-#Static files (CSS, JavaScript, Images)
-#https://docs.djangoproject.com/en/3.2/howto/static-files/
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATIC_URL = '/static/'
@@ -154,11 +151,9 @@ MEDIA_URL = "/media/"
 # Fixtures
 FIXTURE_DIRS = ["fixtures"]
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth user
 AUTH_USER_MODEL = "accounts.User"
@@ -171,8 +166,8 @@ REST_FRAMEWORK = {
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
 
-#REST_AUTH_SERIALIZERS = {"TOKEN_SERIALIZER": "accounts.serializers.TokenSerializer"}
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+# REST_AUTH_SERIALIZERS = {"TOKEN_SERIALIZER": "accounts.serializers.TokenSerializer"}
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
 
 # For django.contrib.sites
 SITE_ID = 1
@@ -189,6 +184,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://example.com",
     "https://sub.example.com",
     "http://localhost:8080",
-    "http://localhost:3000", #if you have seprate react app
+    "http://localhost:3000",  # if you have seprate react app
     "http://127.0.0.1:9000"
 ]

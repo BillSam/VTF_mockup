@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, {Component, Fragment} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
+import {Carousel} from "@coreui/coreui";
 
 export class Register extends Component {
   state = {
@@ -105,3 +106,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { register, createMessage })(Register);
+
