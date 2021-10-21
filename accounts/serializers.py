@@ -9,6 +9,7 @@ from .models import Avatar
 
 User = get_user_model()
 
+
 class AvatarSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
 
